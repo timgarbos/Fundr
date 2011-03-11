@@ -118,6 +118,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
+    'Fundr.fundrBase',
+    #'socialregistration',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -144,3 +146,7 @@ LOGGING = {
         },
     }
 }
+
+
+SOCIALREGISTRATION_GENERATE_USERNAME = True
+
