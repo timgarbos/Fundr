@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'Fundr.views.home', name='home'),
+     url(r'^$', 'fundrBase.views.home', name='home'),
     # url(r'^Fundr/', include('Fundr.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -14,4 +14,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+
+    # Malthe socialregistration
+    url(r'^', include('socialregistration.urls')),
 )

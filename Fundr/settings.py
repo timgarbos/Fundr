@@ -98,12 +98,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'socialregistration.middleware.FacebookMiddleware',
 )
 
 ROOT_URLCONF = 'Fundr.urls'
 
 TEMPLATE_DIRS = (
-"/home/garbos/Fundr/templates"
+    "/home/garbos/Fundr/templates",
+    #"/Users/Malthe/Programming/Fundr/Fundr/templates",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -119,7 +121,7 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'Fundr.fundrBase',
-    #'socialregistration',
+    'socialregistration',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -150,3 +152,10 @@ LOGGING = {
 
 SOCIALREGISTRATION_GENERATE_USERNAME = True
 
+AUTHENTICATION_BACKENDS = {
+    'socialregistration.auth.OpenIDAuth',
+    'socialregistration.auth.FacebookAuth',
+}
+
+FACEBOOK_API_KEY = '183826561662351'
+FACEBOOK_SECRET_KEY = '1ecde4fe4fb7a8ac4081778fc90b8a33'
