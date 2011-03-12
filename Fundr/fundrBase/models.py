@@ -9,7 +9,7 @@ class Project(models.Model):
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    #image
+    image = models.ImageField(upload_to='project_images/',blank=False)
 
     def __unicode__(self):
 	return self.name
