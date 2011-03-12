@@ -1,17 +1,13 @@
 {% extends "site_base.html" %}
 
+{% block banner %}
+  <h2>Profile</h2>
+  <h4>Hi {{request.user.username}}!</h4>
+{% endblock %} 
+
 {% block content %}
-<h2>Profile</h2>
-<p>
-Hi {{request.user.username}}!
-</p>
-<div>
-  <br />
-  <br />
   <h4>Your 5 latest donations:</h4>
   {% for donation in donations %}
   Donation of {{donation.amount}}$ to the feature <a href="{% url fundrBase.views.supportFeature donation.feature.id %}">{{donation.feature.name}}</a> of <a href="{% url fundrBase.views.project donation.feature.project.id %}">{{donation.feature.project.name}}</a><br />
   {% endfor %}
-</div>
-
 {% endblock %}

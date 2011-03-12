@@ -5,77 +5,56 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link href="/site_media/css/style.css" rel="stylesheet" type="text/css" />
 <link  href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911:regular" rel="stylesheet" type="text/css" >
+<link  href="http://fonts.googleapis.com/css?family=Droid+Sans:regular,bold" rel="stylesheet" type="text/css" >
+{% block head %}
+{% endblock %}
 
-{% block head %}{% endblock %}
 </head>
 <body>
 <div id="dvmaincontainer">
-  <!--main div container starts here-->
   <div id="dvtopcontainer">
-    <!-- top container starts here-->
+
     <div id="dvlogocontainer">
-      <!-- logo container starts here-->
-	  <h1>AppFuel</h1>
-	  <h4>Fuel your applications here!</h4>
-      
-      <!-- logo container ends here-->
-    </div>
+      <p style="margin-top: 50px">LOGO HERE</p>
+    </div><!-- dvlogocontainer ends here -->
+
     <div id="dvnavicontainer">
-      <!-- navogation div starts here-->
       <img src="/site_media/images/navi_left.jpg" alt="" />
-<div id="tabs1" >
-
-
+      <div id="tabs1" >
         <ul>
-          <!-- CSS Tabs -->
-          <li id="current"><a href="/"><span>Home</span></a></li>
-          <li><a href="/projects/discover"><span>Discover</span></a></li>
-          <li><a href="/projects/create"><span>Start Project </span></a></li>
-          <li><a href="/about"><span>About Us</span></a></li>
+          <li id="current"><a href="/">Home</a></li>
+          <li><a href="/projects/discover">Discover</a></li>
+          <li><a href="/projects/create">Start Project</a></li>
+          <li><a href="/about">About Us</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="/accounts/profile/">Profile</a></li>
+          <li><a href="/accounts/logout/">Logout</a></li>
+          {%else%}
+          <li><a href="/accounts/login/">Login</a></li>
+          {% endif %}
         </ul>
       </div>
       <img src="/site_media/images/navi_right.jpg" alt="" />
-      <!-- navogation div ends here-->
-    </div>
-    <!-- login div starts here-->
-    <div>
-    {% if user.is_authenticated %}
-    <a href="/accounts/profile/">Profile</a>
-     <a href="/accounts/logout/">Logout</a>
-    {%else%}
-    <a href="/accounts/login/">Login</a>
-    {% endif %}
+    </div> <!-- dvnavicontainer div ends here -->
+  </div> <!-- dvtopcontainer ends here-->
 
-    </div>
-    <!-- login div ends here -->
-    <!-- top container ends here-->
-  </div>
   <div id="dvbodycontainer">
-    <!-- body div starts here-->
-
-  
-      <div id="midcont">
-        <!-- mid body div starts here-->
-        {% block content %}
-        <h2>Featured Projects</h2>
-        {% for project in projects %}
-          {% include "show_project.html" %}
-        {% endfor %}
-        {% endblock %}
-        <!-- mid body div ends here-->
-      </div>
-
-
-    <!-- body div ends here-->
-  </div>
-  <div id="dvfootercontainer">
-    <!-- footer div starts here-->
-    <div id="foottop">
-      <p><span>Copyright 2011 AppFuel</span> 
+    <div id="dvbannercontainer">
+      {% block banner %}
+      {% endblock %}
     </div>
-    <!-- footer div ends here-->
+    <div id="dvcontentcontainer">
+      {% block content %}
+      {% endblock %}
+    </div>
   </div>
-  <!--main div container ends here-->
+
+  <div id="dvfootercontainer">
+    <div id="foottop">
+      <p></p>
+    </div>
+  </div>
+
 </div>
 </body>
 </html>

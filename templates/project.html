@@ -1,21 +1,22 @@
+
+
 {% extends "site_base.html" %}
 
-{% block content %}
-<div>
-  <div style="float:left;"><img style="width:70px" src="/site_media/{{project.image}}" /></div>
+{% block banner %}
   <h2><a href="/projects/{{project.id}}" >{{project.name}}</a></h2>
-</div>
-<p>
-{{project.description}}
-</p>
-<h3>Features</h3>
-{% for feature in project.features %}
-  {% include "feature.html" %}
-{% endfor %}
+  <h4>{{project.description}}</h4>
+{% endblock %} 
 
-<h3>Members</h3>
+{% block content %}
+  <h3>Features</h3>
+  {% for feature in project.features %}
+  {% include "feature.html" %}
+  {% endfor %}
+  <h3>Members</h3>
 {% for membership in project.memberships %}
 {{membership.user.username}} - {{membership.access}}
 {% endfor %}
+
+{% endblock %}
 
 {% endblock %}
