@@ -23,7 +23,10 @@ def about(request):
     return render_to_response('about.html', {},context_instance=RequestContext(request))
 
 def profile(request):
-    donations = request.user.donation_set.order_by('created').reverse()[:5]
+    try:
+        donations = request.user.donation_set.order_by('created').reverse()[:5]
+    except Exception:
+        return HttpResponseRedirect('/')
     return render_to_response('profile.html', {'donations':donations},context_instance=RequestContext(request))
 
 
