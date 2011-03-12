@@ -8,6 +8,6 @@
 {% block content %}
   <h4>Your 5 latest donations:</h4>
   {% for donation in donations %}
-  Donation of {{donation.amount}}$ to the feature {{donation.feature.name}} of {{donation.feature.project.name}}<br />
+  Donation of {{donation.amount}}$ to the feature <a href="{% url fundrBase.views.supportFeature donation.feature.id %}">{{donation.feature.name}}</a> of <a href="{% url fundrBase.views.project donation.feature.project.id %}">{{donation.feature.project.name}}</a><br />
   {% endfor %}
 {% endblock %}

@@ -1,15 +1,23 @@
 {% extends "site_base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 
+=======
+<div>
+  <div style="float:left;"><img style="width:70px" src="/site_media/{{project.image}}" /></div>
+  <h2><a href="/projects/{{project.id}}" >{{project.name}}</a></h2>
+</div>
+>>>>>>> ae6e3d5d9b445145be3d55932ec8352c353396e3
 <p>
 {{project.description}}
 </p>
 <h3>Features</h3>
 {% for feature in project.features %}
-{% include "feature.html" %}
+  {% include "feature.html" %}
 {% endfor %}
 
+<<<<<<< HEAD
 	{% endblock %}   
 
 
@@ -27,3 +35,6 @@
   {% include "feature.html" %}
   {% endfor %}
 {% endblock %}
+=======
+{% endblock %}
+>>>>>>> ae6e3d5d9b445145be3d55932ec8352c353396e3

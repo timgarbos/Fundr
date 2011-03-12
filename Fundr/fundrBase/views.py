@@ -2,10 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
-from Fundr.fundrBase.models import Project
+from Fundr.fundrBase.models import Project,Feature,Donation,DonationForm,ProjectForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
+
+
 
 # Create your views here.
 
@@ -21,7 +23,10 @@ def about(request):
     return render_to_response('about.html', {},context_instance=RequestContext(request))
 
 def profile(request):
-    donations = request.user.donation_set.order_by('created').reverse()[:5]
+    try:
+        donations = request.user.donation_set.order_by('created').reverse()[:5]
+    except Exception:
+        return HttpResponseRedirect('/')
     return render_to_response('profile.html', {'donations':donations},context_instance=RequestContext(request))
 
 
@@ -51,3 +56,33 @@ def project(request,project_id):
     
     return render_to_response('project.html', {'project':p},context_instance=RequestContext(request))
 
+@login_required
+def supportFeature(request,feature_id):
+    try:
+        f = Feature.objects.get(pk=feature_id)
+    except Feature.DoesNotExist:
+        raise Http404
+    
+    d = Donation(feature=f, user=request.user)
+    
+    if request.method == 'POST':
+        form = DonationForm(request.POST,instance=d)
+        if form.is_valid():
+            form.save()
+            return render_to_response('support_feature_done.html', {'feature':f,'donation':d},context_instance=RequestContext(request))
+    else:
+        form = DonationForm(instance=d)
+    return render_to_response('support_feature.html', {'feature':f,'form':form},context_instance=RequestContext(request))
+
+@login_required
+def createProject(request):
+    tempProject = Project()
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES, instance=tempProject)
+        if form.is_valid():
+            newProject = form.save()
+            return render_to_response('project.html', {'project':newProject},context_instance=RequestContext(request))
+    else:
+        form = ProjectForm(instance=tempProject)
+    return render_to_response('create_project.html', {'form':form}, context_instance=RequestContext(request))
