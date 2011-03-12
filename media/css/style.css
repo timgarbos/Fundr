@@ -106,7 +106,8 @@ float:left;
 /*** BODY CONTAINER ***/
 
 #dvbodycontainer #dvbannercontainer {
-height: 180px;
+height: 160px;
+padding-top: 20px;
 }
 
 #dvbodycontainer #dvcontentcontainer {
