@@ -2,10 +2,10 @@
 
 {% block banner %}
   <h2>Featured projects</h2>
+  <h4>Showing all projects</h4>
 {% endblock %}
 
 {% block content %}
-  <h4>Showing all projects</h4>
   {% for project in projects %}
     {% include "partials/show_project.html" %}
   {% endfor %}

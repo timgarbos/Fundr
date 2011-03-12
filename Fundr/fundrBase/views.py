@@ -16,6 +16,11 @@ def home(request):
         projects = Project.objects.all()
     except Project.DoesNotExist:
         raise Http404
+
+    for project in projects:
+#        project.features = project.topfeatures()
+        project.features = project.feature_set.all()
+
     return render_to_response('home.html', {'projects':projects},context_instance=RequestContext(request))
 
 

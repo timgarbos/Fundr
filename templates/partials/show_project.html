@@ -1,9 +1,9 @@
-<div class="projectbox">
+<div class="show_project">
  <h3><a href="/projects/{{project.id}}" >{{project.name}}</a></h3>
  <p>
  {{project.description}}
  </p>
  {% for feature in project.features %}
-   {% include "partials/show_feature.html" %}
+   {% include "partials/show_feature_summery.html" %}
  {% endfor %}
 </div>
