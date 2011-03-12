@@ -35,8 +35,8 @@ def logoutUser(request):
     return HttpResponseRedirect('/')
 
 
-    
-    
+
+
 def discover(request):
     return render_to_response('discover.html', {},context_instance=RequestContext(request))
 

@@ -3,6 +3,7 @@
 {% extends "site_base.html" %}
 
 {% block banner %}
+  <div style="float:left;"><img style="width:70px" src="/site_media/{{project.image}}" /></div>
   <h2><a href="/projects/{{project.id}}" >{{project.name}}</a></h2>
   <h4>{{project.description}}</h4>
 {% endblock %} 
@@ -13,10 +14,8 @@
   {% include "feature.html" %}
   {% endfor %}
   <h3>Members</h3>
-{% for membership in project.memberships %}
-{{membership.user.username}} - {{membership.access}}
-{% endfor %}
-
-{% endblock %}
+  {% for membership in project.memberships %}
+  {{membership.user.username}} - {{membership.access}}
+  {% endfor %}
 
 {% endblock %}
