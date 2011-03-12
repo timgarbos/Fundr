@@ -4,6 +4,8 @@ from django.template import RequestContext
 from django.http import Http404
 from Fundr.fundrBase.models import Project
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -17,6 +19,16 @@ def home(request):
 
 def about(request):
     return render_to_response('about.html', {},context_instance=RequestContext(request))
+
+def profile(request):
+    return render_to_response('profile.html', {},context_instance=RequestContext(request))
+   
+   
+def logoutUser(request):
+    logout(request)
+    return HttpResponseRedirect('/')
+
+
     
     
 def discover(request):
