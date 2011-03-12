@@ -1,10 +1,10 @@
-
-
 {% extends "site_base.html" %}
 
 {% block banner %}
-  <div style="float:left;"><img style="width:70px" src="/site_media/{{project.image}}" /></div>
-  <h2><a href="/projects/{{project.id}}" >{{project.name}}</a></h2>
+  <div class="project_logo">
+   <img src="/site_media/{{project.image}}" />
+  </div>
+  <h2>{{project.name}}</h2>
   <h4>{{project.description}}</h4>
 {% endblock %} 
 
@@ -12,7 +12,7 @@
   <h3>Features</h3>
   <a href="{% url fundrBase.views.request_feature project.id %}">Request new feature</a><br />
   {% for feature in project.features %}
-  {% include "partials/show_feature.html" %}
+    {% include "partials/show_feature.html" %}
   {% endfor %}
   {% if is_admin %}
   <h3>Requested features</h3>
@@ -22,7 +22,6 @@
   {% endif %}
   <h3>Members</h3>
   {% for membership in project.memberships %}
-  {{membership.user.username}} - {{membership.access}}
+    {{membership.user.username}} - {{membership.access}}
   {% endfor %}
-
 {% endblock %}

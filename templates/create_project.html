@@ -1,9 +1,13 @@
 {% extends "site_base.html" %}
 
+{% block banner %}
+  <h2>Create new project</h2>
+  <h4>Start a new project on AppFuel</h4>
+{% endblock %} 
+
 {% block content %}
 
 <p>
-Create new project
 <form enctype="multipart/form-data" method="post" action="">
 {% csrf_token %} 
 {{ form }}
