@@ -7,7 +7,7 @@
 {%block feature_support %}
 <p
 Support this feature!
-<form method="post" action="">
+<form method="post" action="/feature/{{feature.id}}">
 {% csrf_token %} 
 {{ form }}
 <input type="submit" value="Support!"/>
