@@ -1,0 +1,15 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<p>
+Request a new feature
+<form method="post" action="">
+{% csrf_token %} 
+{{ form }}
+<input type="submit" value="DON'T Support!"/>
+</form>
+
+</p>
+
+{% endblock %}
