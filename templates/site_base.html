@@ -57,15 +57,13 @@
         <!-- mid body div starts here-->
         {% block content %}
         <h2>Featured Projects</h2>
-
-{% for project in projects %}
-{% include "show_project.html" %}
-{% endfor %}
-	{% endblock %}   
+        {% for project in projects %}
+          {% include "show_project.html" %}
+        {% endfor %}
+        {% endblock %}
         <!-- mid body div ends here-->
       </div>
 
-	
 
     <!-- body div ends here-->
   </div>
