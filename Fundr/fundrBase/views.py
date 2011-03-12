@@ -21,7 +21,8 @@ def about(request):
     return render_to_response('about.html', {},context_instance=RequestContext(request))
 
 def profile(request):
-    return render_to_response('profile.html', {},context_instance=RequestContext(request))
+    donations = request.user.donation_set.all()
+    return render_to_response('profile.html', {'donations':donations},context_instance=RequestContext(request))
    
    
 def logoutUser(request):
