@@ -49,7 +49,6 @@ font-family: 'Droid Sans', serif;
 font-weight: 400;
 font-size: 40px;
 color: #555;
-clear: left;
 }
 
 h4 {
@@ -139,12 +138,49 @@ float: left;
 #body #banner .project_logo img
 {
 height: 145px;
+width: 145px;
 margin-right: 20px;
 }
 
 #body #content
 {
 margin-top: 20px;
+}
+
+#body #content .show_project .project_logo
+{
+float: left;
+}
+
+#body #content .show_project .project_logo img
+{
+height: 100px;
+width: 100px;
+margin-right: 20px;
+}
+
+#body #content .show_project .show_project_header
+{
+border: 1px solid #FF0000;
+height: 120px;
+}
+
+#body #content .show_project {
+border: 1px solid #00FF00;
+float: left;
+width: 448px; /* 2*(448+2)=900 */
+}
+
+#body #content .show_project .show_feature_summery {
+height: 120px;
+border: 1px solid #0000FF;
+}
+
+#body #content .show_feature {
+height: 155px;
+border: 1px solid #0000FF;
+float: left;
+width: 448px; /* 2*(448+2)=900 */
 }
 
 /*** FOOTER CONTAINER ***/
@@ -159,25 +195,6 @@ float:left;
 font-size:12px;
 text-align:left;
 color:#555;
-}
-
-.show_project {
-
-border: 1px solid #00FF00;
-float: left;
-width: 448px; /* 2*(448+2)=900 */
-}
-
-.show_feature_summery {
-height: 120px;
-border: 1px solid #0000FF;
-}
-
-.show_feature {
-height: 155px;
-border: 1px solid #0000FF;
-float: left;
-width: 448px; /* 2*(448+2)=900 */
 }
 
 
