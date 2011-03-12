@@ -20,7 +20,8 @@ class Project(models.Model):
                 list.append(feature)
         return list
 
-
+    def top_features(self):
+        return self.feature_set.all()[0:3]
 
     def __unicode__(self):
         return self.name
