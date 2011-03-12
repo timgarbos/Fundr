@@ -57,9 +57,9 @@ def project(request,project_id,**kwargs):
     except Exception as e:
         print e
 
-    p.features = p.feature_set.all()
+    p.features = p.get_active_features()
 
-    return render_to_response('project.html', {'project':p},context_instance=RequestContext(request))
+    return render_to_response('project.html', {'project':p}, context_instance=RequestContext(request))
 
 @login_required
 def supportFeature(request,feature_id):
