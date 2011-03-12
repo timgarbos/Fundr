@@ -21,10 +21,10 @@ def about(request):
     return render_to_response('about.html', {},context_instance=RequestContext(request))
 
 def profile(request):
-    donations = request.user.donation_set.all()
+    donations = request.user.donation_set.order_by('created').reverse()[:5]
     return render_to_response('profile.html', {'donations':donations},context_instance=RequestContext(request))
-   
-   
+
+
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/')
