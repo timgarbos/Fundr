@@ -9,6 +9,8 @@ urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'fundrBase.views.home', name='home'),
      url(r'about$', 'fundrBase.views.about', name='about'),
+     url(r'projects/discover$', 'fundrBase.views.discover', name='discover'),
+     url(r'projects/create$', 'fundrBase.views.create', name='create'),
      url(r'projects/(?P<project_id>\d+)/$', 'fundrBase.views.project', name='project'),
     # url(r'^Fundr/', include('Fundr.foo.urls')),
 

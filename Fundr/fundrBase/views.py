@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
 from Fundr.fundrBase.models import Project
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -16,6 +17,14 @@ def home(request):
 
 def about(request):
     return render_to_response('about.html', {},context_instance=RequestContext(request))
+    
+    
+def discover(request):
+    return render_to_response('discover.html', {},context_instance=RequestContext(request))
+
+@login_required
+def create(request):
+    return render_to_response('create.html', {},context_instance=RequestContext(request))
 
 
 
