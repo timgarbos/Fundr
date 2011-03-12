@@ -12,6 +12,16 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project_images/',blank=False)
     #members = models.ManyToManyField(User, through='ProjectAccess')
 
+    def get_active_features(self):
+        set = self.feature_set.all()
+        list = []
+        for feature in set:
+            if feature.activeStatus().status != 'R':
+                list.append(feature)
+        return list
+
+
+
     def __unicode__(self):
         return self.name
 
@@ -71,7 +81,7 @@ class Feature(models.Model):
 
 FEATURE_STATUS_OPTIONS = (
     ('P', 'In progress'),
-    ('C', 'Created'),
+    ('R', 'Requested'),
     ('A', 'Accepted'),
     ('F', 'Funded'),
     ('V', 'Verified'),
