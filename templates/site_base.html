@@ -4,6 +4,7 @@
 <title>AppFuel.org {% block title %}{{ title }}{% endblock %}</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <link href="/site_media/css/style.css" rel="stylesheet" type="text/css" />
+<link  href="http://fonts.googleapis.com/css?family=Goudy+Bookletter+1911:regular" rel="stylesheet" type="text/css" >
 
 {% block head %}{% endblock %}
 </head>
@@ -57,15 +58,13 @@
         <!-- mid body div starts here-->
         {% block content %}
         <h2>Featured Projects</h2>
-
-{% for project in projects %}
-{% include "show_project.html" %}
-{% endfor %}
-	{% endblock %}   
+        {% for project in projects %}
+          {% include "show_project.html" %}
+        {% endfor %}
+        {% endblock %}
         <!-- mid body div ends here-->
       </div>
 
-	
 
     <!-- body div ends here-->
   </div>

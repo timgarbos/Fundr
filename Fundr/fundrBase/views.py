@@ -23,9 +23,10 @@ def about(request):
     return render_to_response('about.html', {},context_instance=RequestContext(request))
 
 def profile(request):
-    return render_to_response('profile.html', {},context_instance=RequestContext(request))
-   
-   
+    donations = request.user.donation_set.order_by('created').reverse()[:5]
+    return render_to_response('profile.html', {'donations':donations},context_instance=RequestContext(request))
+
+
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/')
@@ -68,5 +69,5 @@ def supportFeature(request,feature_id):
             return render_to_response('support_feature_done.html', {'feature':f,'donation':d},context_instance=RequestContext(request))
     else:
         form = DonationForm(instance=d)
-        return render_to_response('support_feature.html', {'feature':f,'form':form},context_instance=RequestContext(request))
+    return render_to_response('support_feature.html', {'feature':f,'form':form},context_instance=RequestContext(request))
 
