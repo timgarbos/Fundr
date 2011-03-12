@@ -1,0 +1,18 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+<h2><a href="/projects/{{feature.project.id}}" >{{feature.project.name}}</a></h2>
+
+<h3>{{feature.name}}</h3>
+{%block feature_support %}
+<p
+Support this feature!
+<form method="post" action="">
+{% csrf_token %} 
+{{ form }}
+<input type="submit" value="Support!"/>
+</form>
+
+</p>
+{%endblock %}
+	{% endblock %}   
