@@ -55,7 +55,12 @@ class Feature(models.Model):
 
     def activeStatus(self):
         #get latest status
-        return self.featurestatusentry_set.all().order_by('-created')[0]
+        try:
+            latest = self.featurestatusentry_set.all().order_by('-created')[0]
+        except:
+            print "No latest status entry could be found"
+            pass
+        return latest
 
     def percentageFunded(self):
         return float((self.currentFund()/self.activeStatus().goal))*100
