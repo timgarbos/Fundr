@@ -1,6 +1,10 @@
 {% extends "site_base.html" %}
 {% load url from future %}
 
+{% block banner %}
+<h2>Login </h2>
+{% endblock %} 
+
 {% block content %}
 
 {% if form.errors %}
@@ -24,8 +28,7 @@
 <input type="hidden" name="next" value="{{ next }}" />
 </form>
 
-
-<h2>Test stuff </h2>
+<h3>Test stuff </h3>
     {% load facebook_tags %}
     {% facebook_button %}
     {% facebook_js %}
