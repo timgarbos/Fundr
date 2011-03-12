@@ -1,0 +1,11 @@
+{% extends "site_base.html" %}
+
+{% block banner %}
+  <h2>Featured projects</h2>
+{% endblock %}
+
+{% block content %}
+  {% for project in projects %}
+    {% include "show_project.html" %}
+  {% endfor %}
+{% endblock %}
