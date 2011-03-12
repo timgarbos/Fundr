@@ -2,10 +2,12 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
-from Fundr.fundrBase.models import Project
+from Fundr.fundrBase.models import Project,Feature,Donation,DonationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
+
+
 
 # Create your views here.
 
@@ -49,4 +51,22 @@ def project(request,project_id):
     p.features = p.feature_set.all()
     
     return render_to_response('project.html', {'project':p},context_instance=RequestContext(request))
+
+@login_required
+def supportFeature(request,feature_id):
+    try:
+        f = Feature.objects.get(pk=feature_id)
+    except Feature.DoesNotExist:
+        raise Http404
+    
+    d = Donation(feature=f, user=request.user)
+    
+    if request.method == 'POST':
+        form = DonationForm(request.POST,instance=d)
+        if form.is_valid():
+            form.save()
+            return render_to_response('support_feature_done.html', {'feature':f,'donation':d},context_instance=RequestContext(request))
+    else:
+        form = DonationForm(instance=d)
+        return render_to_response('support_feature.html', {'feature':f,'form':form},context_instance=RequestContext(request))
 

@@ -50,6 +50,8 @@ class Feature(models.Model):
         return value
         
     def averageFund(self):
+        if self.donation_set.count()==0:
+            return 0
         return self.currentFund()/self.donation_set.count()
        
 
@@ -93,7 +95,20 @@ class Donation(models.Model):
     feature = models.ForeignKey(Feature)
     amount = models.DecimalField(max_digits=20,decimal_places=4)
     user = models.ForeignKey(User)
+    comment = models.TextField()
     #image
 
     def __unicode__(self):
 	return u'%s : %s to %s' % (self.user, self.amount, self.feature)
+	
+
+	
+from django.forms import ModelForm
+	
+#forms
+class DonationForm(ModelForm):
+    class Meta:
+        model = Donation
+        fields = ('amount', 'comment')
+
+
