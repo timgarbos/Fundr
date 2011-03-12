@@ -38,12 +38,13 @@
     </div>
     <!-- login div starts here-->
     <div>
-    {% load facebook_tags %}
-    {% facebook_button %}
-    {% facebook_js %}
+    {% if user.is_authenticated %}
+    <a href="/accounts/profile/">Profile</a>
+     <a href="/accounts/logout/">Logout</a>
+    {%else%}
+    <a href="/accounts/login/">Login</a>
+    {% endif %}
 
-    {% load openid_tags %}
-    {% openid_form %}
     </div>
     <!-- login div ends here -->
     <!-- top container ends here-->
