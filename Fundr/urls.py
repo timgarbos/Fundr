@@ -8,6 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
      url(r'^$', 'fundrBase.views.home', name='home'),
+     url(r'about$', 'fundrBase.views.about', name='about'),
+     url(r'projects/(?P<project_id>\d+)/$', 'fundrBase.views.project', name='project'),
     # url(r'^Fundr/', include('Fundr.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

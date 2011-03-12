@@ -39,10 +39,30 @@ class Feature(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     project = models.ForeignKey(Project)
+    
+    
     #image
 
+    def currentFund(self):
+        value = 0
+        for d in self.donation_set.all():
+            value +=d.amount
+        return value
+        
+    def averageFund(self):
+        return self.currentFund()/self.donation_set.count()
+       
+
+        
+    def activeStatus(self):
+        #get latest status
+        return self.featurestatusentry_set.all().order_by('-created')[0]
+        
+    def percentageFunded(self):
+        return float((self.currentFund()/self.activeStatus().goal))*100
+        
     def __unicode__(self):
-	return u'%s (%s)' % (self.name, self.project)
+	    return u'%s (%s)' % (self.name, self.project)
 
 
 FEATURE_STATUS_OPTIONS = (

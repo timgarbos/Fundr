@@ -27,7 +27,7 @@
 
         <ul>
           <!-- CSS Tabs -->
-          <li id="current"><a href="/home"><span>Home</span></a></li>
+          <li id="current"><a href="/"><span>Home</span></a></li>
           <li><a href="/projects/list"><span>Discover</span></a></li>
           <li><a href="/projects/create"><span>Start Project </span></a></li>
           <li><a href="/about"><span>About Us</span></a></li>
@@ -56,11 +56,10 @@
         <!-- mid body div starts here-->
         {% block content %}
         <h2>Featured Projects</h2>
-	<p>
-awesome content here
-<br><br>
-AppFuel is pretty nice
-</p>
+
+{% for project in projects %}
+{% include "show_project.html" %}
+{% endfor %}
 	{% endblock %}   
         <!-- mid body div ends here-->
       </div>
