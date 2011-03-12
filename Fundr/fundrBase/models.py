@@ -12,7 +12,7 @@ class Project(models.Model):
     image = models.ImageField(upload_to='project_images/',blank=False)
 
     def __unicode__(self):
-	return self.name
+        return self.name
 
 PROJECT_ACCESS_CHOICES = (
     ('A', 'Admin'),
@@ -111,4 +111,8 @@ class DonationForm(ModelForm):
         model = Donation
         fields = ('amount', 'comment')
 
+class ProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        fields = ('name', 'description', 'image')
 

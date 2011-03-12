@@ -1,11 +1,13 @@
 {% extends "site_base.html" %}
 
 {% block content %}
-<h2><a href="/projects/{{project.id}}" >{{project.name}}</a></h2>
+<div>
+  <div style="float:left;"><img style="width:70px" src="/site_media/{{project.image}}" /></div>
+  <h2><a href="/projects/{{project.id}}" >{{project.name}}</a></h2>
+</div>
 <p>
 {{project.description}}
 </p>
-<div style="float:right"><img src="/site_media/{{project.image}}" />
 <h3>Features</h3>
 {% for feature in project.features %}
   {% include "feature.html" %}
