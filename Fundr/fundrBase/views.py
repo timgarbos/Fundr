@@ -62,10 +62,13 @@ def project(request,project_id,**kwargs):
     except Exception as e:
         print e
 
-    is_admin = p in request.user.project_set.all()
-
     p.features = p.get_active_features()
     p.requested_features = p.get_requested_features()
+
+    try:
+        is_admin = request.user.profile.is_admin_of(p)
+    except:
+        is_admin = False
 
     return render_to_response('project.html', {'project':p, 'is_admin':is_admin}, context_instance=RequestContext(request))
 
@@ -132,7 +135,10 @@ def edit_feature(request, feature_id):
     except Feature.DoesNotExist:
         raise Http404
 
-    if not request.user.is_admin_of(f.project):
+    try:
+        if not request.user.profile.is_admin_of(f.project):
+            raise Http404
+    except:
         raise Http404
 
 

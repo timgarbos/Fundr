@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Profile(models.Model):
+    user = models.OneToOneField('auth.User')
+
+    def is_admin_of(self, project):
+        return project in self.user.project_set.all()
+
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
