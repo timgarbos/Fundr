@@ -13,6 +13,32 @@ background-repeat:repeat-x;
 background-color:#FFF;
 font-family:'Helvetica', Arial, Verdana;
 }
+h2 {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: 2px 2px 2px #aaa;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0.03em;
+  word-spacing: 0.003em;
+  line-height: 1.2;
+  color: #FFF;
+}
+h3 {
+  font-family: 'Goudy Bookletter 1911', serif;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  text-shadow: 2px 2px 2px #aaa;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0.03em;
+  word-spacing: 0.003em;
+  line-height: 1.2;
+  color: #FFF;
+}
 #dvmaincontainer
 {
 width:900px;
