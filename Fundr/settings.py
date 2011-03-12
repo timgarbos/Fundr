@@ -50,7 +50,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/garbos/Fundr/media/'
+MEDIA_ROOT = PROJECT_ROOT + '/../media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -72,7 +72,7 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
-STATIC_DOC_ROOT = '/home/garbos/Fundr/media'
+STATIC_DOC_ROOT = PROJECT_ROOT + '/../media/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
@@ -122,7 +122,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'Fundr.urls'
 
 TEMPLATE_DIRS = (
-    "/home/garbos/Fundr/templates",
+    PROJECT_ROOT + '/../templates/',
     #"/Users/Malthe/Programming/Fundr/Fundr/templates",
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -169,13 +169,13 @@ LOGGING = {
     }
 }
 
-
+"""
 SOCIALREGISTRATION_GENERATE_USERNAME = True
 
 AUTHENTICATION_BACKENDS = (
    'socialregistration.auth.OpenIDAuth',
    'socialregistration.auth.FacebookAuth',
 )
-
+"""
 FACEBOOK_API_KEY = '183826561662351'
 FACEBOOK_SECRET_KEY = '1ecde4fe4fb7a8ac4081778fc90b8a33'
