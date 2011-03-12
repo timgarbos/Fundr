@@ -20,7 +20,6 @@ class Project(models.Model):
                 list.append(feature)
         return list
 
-<<<<<<< HEAD
     def get_requested_features(self):
         set = self.feature_set.all()
         list = []
@@ -29,10 +28,8 @@ class Project(models.Model):
                 list.append(feature)
         return list
 
-=======
     def top_features(self):
         return self.feature_set.all()[0:3]
->>>>>>> b03302b6e782e3801fdc362059644f3240ef5399
 
     def __unicode__(self):
         return self.name
