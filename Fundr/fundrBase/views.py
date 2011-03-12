@@ -46,7 +46,7 @@ def create(request):
 
 
 
-def project(request,project_id):
+def project(request,project_id,**kwargs):
     try:
         p = Project.objects.get(pk=project_id)
     except Project.DoesNotExist:
@@ -89,7 +89,7 @@ def createProject(request):
             newProject = form.save()
             newMembership = Membership(access='Admin', project=newProject, user=request.user)
             newMembership.save()
-            return render_to_response('project.html', {'project':newProject}, context_instance=RequestContext(request))
+            return project(request, newProject.id, msg='Thank you for creating ' + newProject.name + '!')
     else:
         form = ProjectForm(instance=tempProject)
     return render_to_response('create_project.html', {'form':form}, context_instance=RequestContext(request))
