@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
-from Fundr.fundrBase.models import Project,Membership,Feature,Donation,DonationForm,ProjectForm
+from Fundr.fundrBase.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
@@ -69,7 +69,7 @@ def supportFeature(request,feature_id):
         raise Http404
     
     d = Donation(feature=f, user=request.user)
-    
+
     if request.method == 'POST':
         form = DonationForm(request.POST,instance=d)
         if form.is_valid():
@@ -93,3 +93,25 @@ def createProject(request):
     else:
         form = ProjectForm(instance=tempProject)
     return render_to_response('create_project.html', {'form':form}, context_instance=RequestContext(request))
+
+@login_required
+def request_feature(request, project_id):
+    print "Win"
+    try:
+        p = Project.objects.get(pk=project_id)
+    except Project.DoesNotExist:
+        print "Fail"
+        #raise Http404
+
+    tempFeature = Feature(project=p, user=request.user)
+
+    if request.method == 'POST':
+        form = RequestFeatureForm(request.POST, instance=tempFeature)
+        if form.is_valid():
+            newFeature = form.save()
+            newFeatureStatusEntry = FeatureStatusEntry(feature=newFeature, status='C', goal=100)
+            newFeatureStatusEntry.save()
+            return project(request, p.id, msg='Thank you for suggesting the feature' + newFeature.name + '!')
+    else:
+        form = RequestFeatureForm(instance=tempFeature)
+    return render_to_response('request_feature.html', {'form':form}, context_instance=RequestContext(request))

@@ -10,8 +10,9 @@
 
 {% block content %}
   <h3>Features</h3>
+  <a href="{% url fundrBase.views.request_feature project.id %}">Request new feature</a><br />
   {% for feature in project.features %}
-  {% include "feature.html" %}
+  {% include "partials/feature.html" %}
   {% endfor %}
   <h3>Members</h3>
   {% for membership in project.memberships %}

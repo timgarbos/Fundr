@@ -37,6 +37,7 @@ class Feature(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     project = models.ForeignKey(Project)
+    user = models.ForeignKey(User)
     #image
 
     def currentFund(self):
@@ -49,18 +50,18 @@ class Feature(models.Model):
         if self.donation_set.count()==0:
             return 0
         return self.currentFund()/self.donation_set.count()
-       
 
-        
+
+
     def activeStatus(self):
         #get latest status
         return self.featurestatusentry_set.all().order_by('-created')[0]
-        
+
     def percentageFunded(self):
         return float((self.currentFund()/self.activeStatus().goal))*100
-        
+
     def __unicode__(self):
-	    return u'%s (%s)' % (self.name, self.project)
+        return u'%s (%s)' % (self.name, self.project)
 
 
 FEATURE_STATUS_OPTIONS = (
@@ -82,7 +83,7 @@ class FeatureStatusEntry(models.Model):
     #image
 
     def __unicode__(self):
-	return u'%s : %s' % (self.feature, self.status)
+        return u'%s : %s' % (self.feature, self.status)
 
 
 class Donation(models.Model):
@@ -95,12 +96,12 @@ class Donation(models.Model):
     #image
 
     def __unicode__(self):
-	return u'%s : %s to %s' % (self.user, self.amount, self.feature)
-	
+        return u'%s : %s to %s' % (self.user, self.amount, self.feature)
 
-	
+
+
 from django.forms import ModelForm
-	
+
 #forms
 class DonationForm(ModelForm):
     class Meta:
@@ -112,3 +113,7 @@ class ProjectForm(ModelForm):
         model = Project
         fields = ('name', 'description', 'image')
 
+class RequestFeatureForm(ModelForm):
+    class Meta:
+        model = Feature
+        fields = ('name', 'description')
