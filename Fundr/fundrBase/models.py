@@ -29,7 +29,7 @@ class ProjectAccess(models.Model):
     #image
 
     def __unicode__(self):
-	return u'%s -> %s' % (self.first_user, self.project)
+	return u'%s is %s on %s' % (self.user, self.access, self.project)
 
 
 
@@ -42,7 +42,7 @@ class Feature(models.Model):
     #image
 
     def __unicode__(self):
-	return self.name
+	return u'%s (%s)' % (self.name, self.project)
 
 
 FEATURE_STATUS_OPTIONS = (
@@ -76,4 +76,4 @@ class Donation(models.Model):
     #image
 
     def __unicode__(self):
-	return u'%s : %s to %s' % (self.feature_user, self.amount, self.feature)
+	return u'%s : %s to %s' % (self.user, self.amount, self.feature)

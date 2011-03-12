@@ -1,9 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+
 # Create your views here.
 
 def home(request):
-    str = """
-{% load facebook_tags %}
-{% facebook_button %}
-{% facebook_js %}"""
-    return HttpResponse(str)
+    return render_to_response('site_base.html', {},context_instance=RequestContext(request))
+

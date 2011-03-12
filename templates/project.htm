@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Fundr {% block title %}{{ title }}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="/site_media/css/style.css" rel="stylesheet" type="text/css" />
+
+{% block head %}{% endblock %}
+</head>
+<body>
+<div id="dvmaincontainer">
+  <!--main div container starts here-->
+  <div id="dvtopcontainer">
+    <!-- top container starts here-->
+    <div id="dvlogocontainer">
+      <!-- logo container starts here-->
+	  <h1>Please Fund Me!</h1>
+	  <h4>I really need the money!</h4>
+      
+      <!-- logo container ends here-->
+    </div>
+    <div id="dvnavicontainer">
+      <!-- navogation div starts here-->
+      <img src="/site_media/images/navi_left.jpg" alt="" />
+<div id="tabs1" >
+        <ul>
+          <!-- CSS Tabs -->
+          <li id="current"><a href="#"><span>Home</span></a></li>
+          <li><a href="#"><span>Services</span></a></li>
+          <li><a href="#"><span>Portfolio </span></a></li>
+          <li><a href="#"><span>Blog</span></a></li>
+          <li><a href="#"><span>About Us</span></a></li>
+        </ul>
+      </div>
+      <img src="/site_media/images/navi_right.jpg" alt="" />
+      <!-- navogation div ends here-->
+    </div>
+    <!-- top container ends here-->
+  </div>
+  <div id="dvbodycontainer">
+    <!-- body div starts here-->
+
+	{% block content %}{% endblock %}   
+
+    <!-- body div ends here-->
+  </div>
+  <div id="dvfootercontainer">
+    <!-- footer div starts here-->
+    <div id="foottop">
+      <p><span>Copyright © 2008 Your Company Name</span> <a href="#" title="Home">Home</a><a href="#" title="Services">Services</a><a href="#" title="Portfolio">Portfolio</a><a href="#" title="Blog">Blog</a><a href="http://www.studio7designs.com">Eco Web Design by Studio7designs</a></p>
+      <div class="/site_media/design"> <a href="#"><img src="/site_media/images/studio.jpg" alt="Studio7designs" border="0" title="Studio7designs" /></a> </div>
+    </div>
+    <!-- footer div ends here-->
+  </div>
+  <!--main div container ends here-->
+</div>
+</body>
+</html>

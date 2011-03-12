@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>AppFuel.org {% block title %}{{ title }}{% endblock %}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link href="/site_media/css/style.css" rel="stylesheet" type="text/css" />
+
+{% block head %}{% endblock %}
+</head>
+<body>
+<div id="dvmaincontainer">
+  <!--main div container starts here-->
+  <div id="dvtopcontainer">
+    <!-- top container starts here-->
+    <div id="dvlogocontainer">
+      <!-- logo container starts here-->
+	  <h1>AppFuel</h1>
+	  <h4>Fuel your applications here!</h4>
+      
+      <!-- logo container ends here-->
+    </div>
+    <div id="dvnavicontainer">
+      <!-- navogation div starts here-->
+      <img src="/site_media/images/navi_left.jpg" alt="" />
+<div id="tabs1" >
+
+
+        <ul>
+          <!-- CSS Tabs -->
+          <li id="current"><a href="/home"><span>Home</span></a></li>
+          <li><a href="/projects/list"><span>Discover</span></a></li>
+          <li><a href="/projects/create"><span>Start Project </span></a></li>
+          <li><a href="/about"><span>About Us</span></a></li>
+        </ul>
+      </div>
+      <img src="/site_media/images/navi_right.jpg" alt="" />
+      <!-- navogation div ends here-->
+    </div>
+    <!-- login div starts here-->
+    <div>
+    {% load facebook_tags %}
+    {% facebook_button %}
+    {% facebook_js %}
+
+    {% load openid_tags %}
+    {% openid_form %}
+    </div>
+    <!-- login div ends here -->
+    <!-- top container ends here-->
+  </div>
+  <div id="dvbodycontainer">
+    <!-- body div starts here-->
+
+  
+      <div id="midcont">
+        <!-- mid body div starts here-->
+        {% block content %}
+        <h2>Featured Projects</h2>
+	<p>
+awesome content here
+<br><br>
+AppFuel is pretty nice
+</p>
+	{% endblock %}   
+        <!-- mid body div ends here-->
+      </div>
+
+	
+
+    <!-- body div ends here-->
+  </div>
+  <div id="dvfootercontainer">
+    <!-- footer div starts here-->
+    <div id="foottop">
+      <p><span>Copyright 2011 AppFuel</span> 
+    </div>
+    <!-- footer div ends here-->
+  </div>
+  <!--main div container ends here-->
+</div>
+</body>
+</html>

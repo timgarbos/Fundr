@@ -1,5 +1,10 @@
 # Django settings for Fundr project.
 
+import os
+import sys
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "apps"))
+print PROJECT_ROOT
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -45,7 +50,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/home/garbos/Fundr/media('
+MEDIA_ROOT = '/home/garbos/Fundr/media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -67,6 +72,8 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
+STATIC_DOC_ROOT = '/home/garbos/Fundr/media'
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
@@ -84,6 +91,17 @@ STATICFILES_FINDERS = (
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'd^k%)z_mc3fu*ywje%dzt*6+obdn#iy7-@3j_216(u)n&*vw^k'
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+	"django.contrib.auth.context_processors.auth",
+	"django.core.context_processors.debug",
+	"django.core.context_processors.i18n",
+	"django.core.context_processors.media",
+	"django.core.context_processors.static",
+	"django.contrib.messages.context_processors.messages",
+	"django.core.context_processors.request"
+)
+
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -111,6 +129,8 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 )
 
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -120,7 +140,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
-    'Fundr.fundrBase',
+    'fundrBase',
     'socialregistration',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
@@ -152,10 +172,10 @@ LOGGING = {
 
 SOCIALREGISTRATION_GENERATE_USERNAME = True
 
-AUTHENTICATION_BACKENDS = {
-    'socialregistration.auth.OpenIDAuth',
-    'socialregistration.auth.FacebookAuth',
-}
+AUTHENTICATION_BACKENDS = (
+   'socialregistration.auth.OpenIDAuth',
+   'socialregistration.auth.FacebookAuth',
+)
 
 FACEBOOK_API_KEY = '183826561662351'
 FACEBOOK_SECRET_KEY = '1ecde4fe4fb7a8ac4081778fc90b8a33'
