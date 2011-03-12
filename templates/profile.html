@@ -3,7 +3,15 @@
 {% block content %}
 <h2>Profile</h2>
 <p>
-This is your own personal profile
+Hi {{request.user.username}}!
 </p>
+<div>
+  <br />
+  <br />
+  <h4>Your 5 latest donations:</h4>
+  {% for donation in donations %}
+  Donation of {{donation.amount}}$ to the feature {{donation.feature.name}} of {{donation.feature.project.name}}<br />
+  {% endfor %}
+</div>
 
-	{% endblock %}   
+{% endblock %}
