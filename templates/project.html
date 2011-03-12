@@ -13,4 +13,9 @@
   {% include "feature.html" %}
 {% endfor %}
 
+<h3>Members</h3>
+{% for membership in project.memberships %}
+{{membership.user.username}} - {{membership.access}}
+{% endfor %}
+
 {% endblock %}

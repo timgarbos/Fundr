@@ -10,6 +10,7 @@ class Project(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='project_images/',blank=False)
+    #members = models.ManyToManyField(User, through='ProjectAccess')
 
     def __unicode__(self):
         return self.name
@@ -17,20 +18,17 @@ class Project(models.Model):
 PROJECT_ACCESS_CHOICES = (
     ('A', 'Admin'),
     ('N', 'Normal'),
-
 )
 
-class ProjectAccess(models.Model):
+class Membership(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     access = models.CharField(max_length=1, choices=PROJECT_ACCESS_CHOICES )
     project = models.ForeignKey(Project)
     user = models.ForeignKey(User)
-    #image
 
     def __unicode__(self):
-	return u'%s is %s on %s' % (self.user, self.access, self.project)
-
+        return u'%s is %s on %s' % (self.user, self.access, self.project)
 
 
 class Feature(models.Model):
@@ -39,8 +37,6 @@ class Feature(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     project = models.ForeignKey(Project)
-    
-    
     #image
 
     def currentFund(self):
@@ -48,7 +44,7 @@ class Feature(models.Model):
         for d in self.donation_set.all():
             value +=d.amount
         return value
-        
+
     def averageFund(self):
         if self.donation_set.count()==0:
             return 0
