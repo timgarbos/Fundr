@@ -76,6 +76,8 @@ width: 900px;
 float:left;
 }
 
+/*** TOP CONTAINER ***/
+
 #dvtopcontainer {
 height: 140px;
 overflow: hidden;
@@ -92,7 +94,6 @@ padding:0px 71px 0px 0px;
 #dvtopcontainer #dvnavicontainer
 {
 float:right;
-width:395px;
 margin:0px;
 padding:0px;
 }
@@ -102,6 +103,8 @@ padding:0px;
 float:left;
 }
 
+/*** BODY CONTAINER ***/
+
 #dvbodycontainer #dvbannercontainer {
 height: 180px;
 }
@@ -110,10 +113,12 @@ height: 180px;
 margin-top:20px;
 }
 
+/*** FOOTER CONTAINER ***/
+
 #dvfootercontainer {
 }
 
-#foottop p
+#dvfootercontainer #foottop p
 {
 float:left;
 font-size:12px;
@@ -159,7 +164,7 @@ color:#555;
       float:left;
       /* background:url("../images/tableft1.gif") no-repeat left top;*/
       margin:0;
-      padding:0 0 0 4px;
+      padding: 5px 15px;
       text-decoration:none;  
       }
     #tabs1 a span {
