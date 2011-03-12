@@ -14,6 +14,12 @@
   {% for feature in project.features %}
   {% include "partials/show_feature.html" %}
   {% endfor %}
+  {% if is_admin %}
+  <h3>Requested features</h3>
+  {% for feature in project.requested_features %}
+  {% include "partials/show_feature.html" %}
+  {% endfor %}
+  {% endif %}
   <h3>Members</h3>
   {% for membership in project.memberships %}
   {{membership.user.username}} - {{membership.access}}

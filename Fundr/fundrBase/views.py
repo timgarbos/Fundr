@@ -57,9 +57,12 @@ def project(request,project_id,**kwargs):
     except Exception as e:
         print e
 
-    p.features = p.get_active_features()
+    is_admin = p in request.user.project_set.all()
 
-    return render_to_response('project.html', {'project':p}, context_instance=RequestContext(request))
+    p.features = p.get_active_features()
+    p.requested_features = p.get_requested_features()
+
+    return render_to_response('project.html', {'project':p, 'is_admin':is_admin}, context_instance=RequestContext(request))
 
 @login_required
 def supportFeature(request,feature_id):
@@ -115,3 +118,30 @@ def request_feature(request, project_id):
     else:
         form = RequestFeatureForm(instance=tempFeature)
     return render_to_response('request_feature.html', {'form':form}, context_instance=RequestContext(request))
+
+@login_required
+def edit_feature(request, feature_id):
+
+    try:
+        f = Feature.objects.get(pk=feature_id)
+    except Feature.DoesNotExist:
+        raise Http404
+
+    if not request.user.is_admin_of(f.project):
+        raise Http404
+
+
+    f_status = f.activeStatus()
+
+    if request.method == 'POST':
+        feature_form = RequestFeatureForm(request.POST, instance=f)
+        status_form = FeatureStatusEntryForm(request.POST, instance=f_status)
+        if status_form.is_valid() and feature_form.is_valid():
+            f = feature_form.save()
+            status_form.feature = f
+            status_form.save()
+            return project(request, f.project.id, msg='PUDDI PUDDI PUDDI PUDDI PUDDI PUDDI PUDDI PUDDI!!!!!')
+    else:
+        feature_form = RequestFeatureForm(instance=f)
+        status_form = FeatureStatusEntryForm(instance=f_status)
+    return render_to_response('edit_feature.html', {'feature':f, 'feature_form':feature_form,'status_form':status_form}, context_instance=RequestContext(request))
