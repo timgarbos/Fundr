@@ -13,7 +13,8 @@ urlpatterns = patterns('',
      url(r'^projects/create$', 'fundrBase.views.createProject'),
      url(r'^projects/(?P<project_id>\d+)/$', 'fundrBase.views.project', name='project'),
      url(r'^feature/(?P<feature_id>\d+)/$', 'fundrBase.views.supportFeature', name='support feature'),
-     url(r'^request_feature/(?P<project_id>\d+)/$', 'fundrBase.views.request_feature'),
+     url(r'^feature/request(?P<project_id>\d+)/$', 'fundrBase.views.request_feature'),
+     url(r'^feature/edit/(?P<feature_id>\d+)/$', 'fundrBase.views.edit_feature'),
     # url(r'^Fundr/', include('Fundr.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
