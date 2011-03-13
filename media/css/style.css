@@ -101,6 +101,7 @@ height: 108px;
 width: 350px;
 background-image: url(../images/logo_web.png);
 position: absolute;
+z-index: -1;
 }
 
 #top #navigation
@@ -278,12 +279,9 @@ color:#555;
       #tabs1 #current a {
       	background-position:0% -42px;
 		 color:#92877f;
-<<<<<<< HEAD
-      }
-=======
       }
       #tabs1 #current a span {
       	background-position:100% -42px;
 		 color:#92877f;
       }
->>>>>>> 51e09f3d58518158dead08f8123aaf268ed525e3
+
