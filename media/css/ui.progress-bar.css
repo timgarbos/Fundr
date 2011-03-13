@@ -38,10 +38,7 @@ THE SOFTWARE.
   /* Usual setup stuff */
   position: relative;
   height: 15px;
-<<<<<<< HEAD
   margin-top: 5px;
-=======
->>>>>>> ce41f4e65a7c5199fa96667d33dfa16bc47bbcb1
   
   /* Pad right so we don't cover the borders when fully progressed */
   padding-right: 2px;

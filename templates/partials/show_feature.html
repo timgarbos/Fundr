@@ -1,13 +1,15 @@
 <div class="featurebox">
   <h4><a href="{% url fundrBase.views.feature feature.id %}">{{feature.name}}</a></h4>
+ {% if showDescription %}
  <p>
  {{feature.description}}
  </p>
+ {% endif %}
  <p>
  {% if feature.activeStatus.status != 'R' %}
  Raised <strong>{{feature.currentFund}} </strong> out of  <strong>{{feature.activeStatus.goal}} </strong> with a donation average donation on  <strong>{{feature.averageFund}} </strong>
  <br>
- That is <strong>{{feature.percentageFunded}}%</strong>!
+ That is <strong>{{feature.showPercentageFunded}}%</strong>!
  </p>
  <p>
  <a href="{% url fundrBase.views.donate feature.id %}">Support this feature</a>

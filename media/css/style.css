@@ -18,7 +18,8 @@ img {
 border: none;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4
+{
 font-style: normal;
 text-decoration: none;
 text-transform: none;
@@ -56,7 +57,7 @@ font-family: 'Droid Sans', serif;
 font-weight: 400;
 font-size: 20px;
 color: #555;
-margin: 10px 0;
+margin: 15px 0 5px 0;
 }
 
 #banner h4
@@ -68,6 +69,11 @@ a, a:link, a:visited, a:active {
 color: inherit;
 font: inherit;
 text-decoration: none;
+}
+
+p a
+{
+color: #2687da;
 }
 
 /*** Containers ***/
@@ -278,10 +284,17 @@ color:#555;
       }
       #tabs1 #current a {
       	background-position:0% -42px;
-		 color:#92877f;
+	 color:#92877f;
       }
-      #tabs1 #current a span {
-      	background-position:100% -42px;
-		 color:#92877f;
-      }
-
+/*
+#papir_bg
+{
+background:url(../images/papir.jpg);
+background-repeat: repeat-x;
+background-position: 0 5px;
+height:133px;
+width:100%;
+z-index:-2;
+position:absolute;
+}
+*/

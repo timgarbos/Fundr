@@ -1,4 +1,5 @@
 {% extends "site_base.html" %}
+{% load render_partial %}
 
 {% block banner %}
   <div class="project_logo">
@@ -12,12 +13,12 @@
   <h3>Features</h3>
   <a href="{% url fundrBase.views.request_feature project.id %}">Request new feature</a><br />
   {% for feature in project.features %}
-    {% include "partials/show_feature.html" %}
+    {% render_partial "show_feature.html" feature:feature %}
   {% endfor %}
   {% if is_admin %}
   <h3>Requested features</h3>
   {% for feature in project.requested_features %}
-  {% include "partials/show_feature.html" %}
+    {% render_partial "show_feature.html" feature:feature %}
   {% endfor %}
   {% endif %}
   <h3>Members</h3>
