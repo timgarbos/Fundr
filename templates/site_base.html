@@ -44,14 +44,14 @@ $(document).ready(function() {
         <ul>
           <li id="current"><a href="/">Home</a></li>
           <li><a href="/projects/discover">Discover</a></li>
-          <li><a href="/projects/create">Start Project</a></li>
+          <li><a href="{% url fundrBase.views.create_project %}">Start Project</a></li>
           <li><a href="/about">About Us</a></li>
           {% if user.is_authenticated %}
           <li><a href="{% url fundrBase.views.dashboard %}">Dashboard</a></li>
-          <li><a href="/accounts/profile/">Profile</a></li>
-          <li><a href="/accounts/logout/">Logout</a></li>
+          <li><a href="{% url fundrBase.views.profile %}">Profile</a></li>
+          <li><a href="{% url logout %}">Logout</a></li>
           {%else%}
-          <li><a href="/accounts/login/">Login</a></li>
+          <li><a href="{% url login %}">Login</a></li>
           {% endif %}
         </ul>
       </div>

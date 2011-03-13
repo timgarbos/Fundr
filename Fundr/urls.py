@@ -10,7 +10,7 @@ urlpatterns = patterns('',
      url(r'^$', 'fundrBase.views.home', name='home'),
      url(r'^about$', 'fundrBase.views.about', name='about'),
      url(r'^project/discover$', 'fundrBase.views.discover', name='discover'),
-     url(r'^project/create$', 'fundrBase.views.createProject'),
+     url(r'^project/create$', 'fundrBase.views.create_project'),
      url(r'^project/(?P<project_id>\d+)/$', 'fundrBase.views.project', name='project'),
      url(r'^feature/(?P<feature_id>\d+)/$', 'fundrBase.views.feature'),
      url(r'^donate/(?P<feature_id>\d+)/$', 'fundrBase.views.donate'),
@@ -24,8 +24,8 @@ urlpatterns = patterns('',
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-    (r'^accounts/login/$', 'django.contrib.auth.views.login'),
-    (r'^accounts/logout/$', 'fundrBase.views.logoutUser'),
+    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^accounts/logout/$', 'fundrBase.views.logoutUser', name='logout'),
     (r'^accounts/profile/$', 'fundrBase.views.profile'),
 
     # Uncomment the next line to enable the admin:
