@@ -70,6 +70,8 @@ font: inherit;
 text-decoration: none;
 }
 
+/*** Containers ***/
+
 #main
 {
 width:900px;
@@ -94,8 +96,10 @@ overflow: hidden;
 #top #logo
 {
 float:left;
-margin:0px;
-padding:0px 71px 0px 0px;
+margin-top: 9px;
+height: 108px;
+width: 350px;
+background-image: url(../images/logo_web.png);
 }
 
 #top #navigation
@@ -157,6 +161,7 @@ margin-top: 20px;
 {
 float: left;
 width: 418px; /* 2*(408+2*(1+10))+10 = 900 */
+height: 465px;
 background-color: #F8F8F8;
 border: 1px solid #EEE;
 -moz-border-radius: 10px;
