@@ -1,0 +1,29 @@
+{% extends "site_base.html" %}
+
+{% block banner %}
+  <div class="project_logo">
+   <img src="/site_media/{{project.image}}" />
+  </div>
+  <h2>Dashboard - {{project.name}}</h2>
+  <h4>{{project.description}}</h4>
+{% endblock %}
+
+{% block content %}
+  <h3>Features</h3>
+  <a href="">Add new feature</a><br />
+  {% for feature in project.features %}
+    {% include "partials/show_feature.html" %}
+  {% endfor %}
+  {% if is_admin %}
+  <h3>Requested features</h3>
+  {% for feature in project.requested_features %}
+  {% include "partials/show_feature.html" %}
+  {% endfor %}
+  Test
+  {% endif %}
+  <h3>Members</h3>
+  <a href="">Add new member</a><br />
+  {% for membership in project.memberships %}
+    {{membership.user.username}} - {{membership.access}}
+  {% endfor %}
+{% endblock %}
