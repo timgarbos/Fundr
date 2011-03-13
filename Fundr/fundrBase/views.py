@@ -136,7 +136,7 @@ def request_feature(request, project_id):
         form = RequestFeatureForm(request.POST, instance=tempFeature)
         if form.is_valid():
             newFeature = form.save()
-            newFeatureStatusEntry = FeatureStatusEntry(feature=newFeature, status='C', goal=100)
+            newFeatureStatusEntry = FeatureStatusEntry(feature=newFeature, status='R', goal=100)
             newFeatureStatusEntry.save()
             return project(request, p.id, msg='Thank you for suggesting the feature' + newFeature.name + '!')
     else:

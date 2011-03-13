@@ -1,5 +1,11 @@
 <div class="show_feature_summery">
      <h4><a href="{% url fundrBase.views.feature feature.id %}">{{feature.name}}</a></h4>
      <p>{{feature.description}}<p>
-     <p>[Progress] FIX THIS (show_project.html)<p>
+    <!-- Progress bar -->
+    <div id="progress_bar" class="ui-progress-bar ui-container">
+      <div class="ui-progress" style="width: {{feature.percentageFundedMax100}}%;">
+        <span class="ui-label" style="font-size: 80%"><b class="value">{{feature.percentageFunded|floatformat:"0"}}%</b></span>
+      </div>
+    </div>
+    <!-- /Progress bar -->
 </div>
