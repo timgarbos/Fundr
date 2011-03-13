@@ -72,6 +72,22 @@ def project(request,project_id,**kwargs):
 
     return render_to_response('project.html', {'project':p, 'is_admin':is_admin}, context_instance=RequestContext(request))
 
+
+
+def feature(request,feature_id):
+    try:
+        f = Feature.objects.get(pk=feature_id)
+    except Feature.DoesNotExist:
+        raise Http404
+    
+    try:
+        is_admin = request.user.profile.is_admin_of(f.project)
+    except:
+        is_admin = False
+    
+    return render_to_response('feature.html', {'feature':f, 'is_admin':is_admin}, context_instance=RequestContext(request))
+
+
 @login_required
 def supportFeature(request,feature_id):
     try:
