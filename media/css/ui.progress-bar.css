@@ -117,7 +117,7 @@ THE SOFTWARE.
   border: 1px solid #4c8932;
   
   /* Webkit magic */
-  -webkit-animation: animate-stripes 4s linear infinite;
+  -webkit-animation: animate-stripes 8s linear infinite;
   
   /* TODO: Wait for Mozilla to support animation, then implement */
 }
