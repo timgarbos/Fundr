@@ -17,6 +17,7 @@ urlpatterns = patterns('',
      url(r'^feature/request(?P<project_id>\d+)/$', 'fundrBase.views.request_feature'),
      url(r'^feature/edit/(?P<feature_id>\d+)/$', 'fundrBase.views.edit_feature'),
     # url(r'^Fundr/', include('Fundr.foo.urls')),
+     url(r'^paypal/pdt/', include('paypal.standard.pdt.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -31,6 +32,7 @@ urlpatterns = patterns('',
    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve',
         {'document_root': settings.STATIC_DOC_ROOT}),
 
+   (r'^comments/', include('django.contrib.comments.urls')),
 
     # Malthe socialregistration
     url(r'^', include('socialregistration.urls')),
