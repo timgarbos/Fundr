@@ -90,6 +90,9 @@ class Feature(models.Model):
     def percentageFunded(self):
         return float((self.currentFund()/self.activeStatus().goal))*100
 
+    def percentageFundedMax100(self):
+        return min(100.0, self.percentageFunded())
+
     def __unicode__(self):
         return u'%s (%s)' % (self.name, self.project)
 
