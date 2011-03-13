@@ -192,7 +192,7 @@ def donate(request,feature_id):
     return render_to_response('donate.html', {'feature':f,'form':form,'paypalForm':paypalForm},context_instance=RequestContext(request))
 
 @login_required
-def createProject(request):
+def create_project(request):
     tempProject = Project()
 
     if request.method == 'POST':
