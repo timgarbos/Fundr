@@ -35,6 +35,73 @@ def profile(request):
     return render_to_response('profile.html', {'donations':donations},context_instance=RequestContext(request))
 
 
+def dashboard(request):
+    try:
+        donations = request.user.donation_set.order_by('created').reverse()[:5]
+    except Exception:
+        return HttpResponseRedirect('/')
+    return render_to_response('dashboard.html', {'donations':donations},context_instance=RequestContext(request))
+
+@login_required
+def dashboard_feature(request,feature_id):
+    try:
+        f = Feature.objects.get(pk=feature_id)
+    except Feature.DoesNotExist:
+        raise Http404
+    
+    try:
+        is_admin = request.user.profile.is_admin_of(f.project)
+    except:
+        is_admin = False
+        
+    if not is_admin:
+        return HttpResponseRedirect('/')
+    
+    f.donations = f.donation_set.all()
+    
+    sum = 0
+    x = []
+    y = []
+    max = 0
+    
+    for d in f.donations:
+        x.append(str(d.created.strftime("%s")))
+        sum += d.amount
+        if sum > max:
+            max = sum
+        y.append(str(sum))
+    
+    minlabelx = str(x[0])
+    maxlabelx = str(x[-1])
+    minlabely = "0"
+    maxlabely = str(max)
+    
+    linkstring = "https://chart.googleapis.com/chart?chxt=x,y&cht=lxy&chm=B,B4AFAF34,0,0,0&chg=-1,-1,1,3&chs=250x150&chxr=0,"+minlabelx+","+maxlabelx+"|1,"+minlabely+","+maxlabely+"&chds="+minlabelx+","+maxlabelx+","+minlabely+","+maxlabely+"&chd=t:"
+    
+    linkstring = linkstring + ",".join(x) + "|" + ",".join(y)
+    
+    return render_to_response('dashboard/feature.html', {'feature':f,'linkstring':linkstring}, context_instance=RequestContext(request))
+
+@login_required
+def dashboard_project(request,project_id):
+    try:
+        p = Project.objects.get(pk=project_id)
+    except Project.DoesNotExist:
+        raise Http404
+    
+    try:
+        is_admin = request.user.profile.is_admin_of(p)
+    except:
+        is_admin = False
+        
+    if not is_admin:
+        return HttpResponseRedirect('/')
+    
+    p.features = p.get_active_features()
+    p.requested_features = p.get_requested_features()
+    
+    return render_to_response('dashboard/project.html', {'project':p,'is_admin':is_admin}, context_instance=RequestContext(request))
+
 def logoutUser(request):
     logout(request)
     return HttpResponseRedirect('/')
