@@ -22,8 +22,8 @@ h1, h2, h3, h4 {
 font-style: normal;
 text-decoration: none;
 text-transform: none;
-letter-spacing: 0.03em;
-word-spacing: 0.003em;
+letter-spacing: 0.02em;
+word-spacing: 0em;
 line-height: 1.2;
 }
 
@@ -46,8 +46,8 @@ color: #FFF;
 h3 {
 font-family: 'Droid Sans', serif;
 font-weight: 400;
-font-size: 40px;
-color: #555;
+font-size: 30px;
+color: #2687da; /* #555; */
 margin: 20px 0 10px 0;
 }
 
@@ -56,7 +56,7 @@ font-family: 'Droid Sans', serif;
 font-weight: 400;
 font-size: 20px;
 color: #555;
-margin: 20px 0 10px 0;
+margin: 10px 0;
 }
 
 #banner h4
@@ -67,6 +67,7 @@ margin: 10px 0;
 a, a:link, a:visited, a:active {
 color: inherit;
 font: inherit;
+text-decoration: none;
 }
 
 #main
@@ -153,43 +154,54 @@ margin-right: 20px;
 margin-top: 20px;
 }
 
-#body #content .show_project .project_logo
+#body #content .show_project
 {
 float: left;
-}
-
-#body #content .show_project .project_logo img
-{
-height: 100px;
-width: 100px;
-margin: 10px;
+width: 418px; /* 2*(408+2*(1+10))+10 = 900 */
+background-color: #F8F8F8;
+border: 1px solid #EEE;
+-moz-border-radius: 10px;
+border-radius: 10px;
+margin-right: 10px;
+margin-bottom: 10px;
+padding: 10px;
 }
 
 #body #content .show_project .show_project_header
 {
 height: 120px;
-border: 1px solid #EEE;
+background-color: #F3F3F3;
+background: -moz-linear-gradient(100% 100% 90deg, #EEE, #F9F9F9);
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#F9F9F9), to(#EEE));
 -moz-border-radius: 10px;
 border-radius: 10px;
+margin: -10px;
 overflow: hidden;
 }
 
-#body #content .show_project
+#body #content .show_project .show_project_header h3
 {
-float: left;
-width: 408px; /* 2*(408+2*(1+10+10))=900 */
-border: 1px solid #EEE;
--moz-border-radius: 10px;
-border-radius: 10px;
-margin: 10px;
-padding: 10px;
+   /* To prevent the title from dropping down below the image */
+margin-left: 120px;
 }
 
 #body #content .show_project .show_feature_summery
 {
-height: 120px;
+height: 110px;
 border-top: 1px solid #EEE;
 margin-top: 10px;
+}
+
+#body #content .show_project .show_project_header .project_logo
+{
+float: left;
+}
+
+#body #content .show_project .show_project_header .project_logo img
+{
+height: 100px;
+width: 100px;
+margin: 10px;
 }
 
 #body #content .show_feature
