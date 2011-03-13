@@ -93,6 +93,9 @@ class Feature(models.Model):
     def percentageFundedMax100(self):
         return min(100.0, self.percentageFunded())
 
+    def showPercentageFunded(self):
+        return "%.1f" % self.percentageFunded()
+
     def __unicode__(self):
         return u'%s (%s)' % (self.name, self.project)
 
