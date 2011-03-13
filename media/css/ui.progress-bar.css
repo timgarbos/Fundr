@@ -125,6 +125,7 @@ THE SOFTWARE.
 /* Progress indicator text */
 .ui-progress span.ui-label {
   font-size: 1.2em;
+  font-size: 75%;
   position: absolute;
   right: 0;
   line-height: 12px;

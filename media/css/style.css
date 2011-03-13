@@ -169,7 +169,7 @@ margin-top: 20px;
 {
 float: left;
 width: 418px; /* 2*(408+2*(1+10))+10 = 900 */
-height: 465px;
+height: 345px;
 background-color: #F8F8F8;
 border: 1px solid #EEE;
 -moz-border-radius: 10px;
@@ -199,7 +199,7 @@ margin-left: 120px;
 
 #body #content .show_project .show_feature_summery
 {
-height: 110px;
+height: 70px;
 border-top: 1px solid #EEE;
 margin-top: 10px;
 }
