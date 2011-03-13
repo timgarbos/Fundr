@@ -89,7 +89,7 @@ def feature(request,feature_id):
 
 
 @login_required
-def supportFeature(request,feature_id):
+def donate(request,feature_id):
     try:
         f = Feature.objects.get(pk=feature_id)
     except Feature.DoesNotExist:
@@ -101,10 +101,10 @@ def supportFeature(request,feature_id):
         form = DonationForm(request.POST,instance=d)
         if form.is_valid():
             form.save()
-            return render_to_response('support_feature_done.html', {'feature':f,'donation':d},context_instance=RequestContext(request))
+            return render_to_response('donate_done.html', {'feature':f,'donation':d},context_instance=RequestContext(request))
     else:
         form = DonationForm(instance=d)
-    return render_to_response('support_feature.html', {'feature':f,'form':form},context_instance=RequestContext(request))
+    return render_to_response('donate.html', {'feature':f,'form':form},context_instance=RequestContext(request))
 
 @login_required
 def createProject(request):
@@ -123,25 +123,30 @@ def createProject(request):
 
 @login_required
 def request_feature(request, project_id):
-    print "Win"
+
     try:
         p = Project.objects.get(pk=project_id)
     except Project.DoesNotExist:
-        print "Fail"
-        #raise Http404
+        raise Http404
 
     tempFeature = Feature(project=p, user=request.user)
+    tempDonation = Donation(feature=tempFeature, user=request.user)
 
     if request.method == 'POST':
-        form = RequestFeatureForm(request.POST, instance=tempFeature)
-        if form.is_valid():
-            newFeature = form.save()
+        request_form = RequestFeatureForm(request.POST, instance=tempFeature)
+        donate_form = DonationForm(request.POST, instance=tempDonation)
+        if request_form.is_valid() and donate_form.is_valid():
+            newFeature = request_form.save()
             newFeatureStatusEntry = FeatureStatusEntry(feature=newFeature, status='R', goal=100)
             newFeatureStatusEntry.save()
+            newDonation = Donation(user=request.user, feature=newFeature, amount=donate_form.save(commit=False).amount, comment=donate_form.save(commit=False).comment)
+            newDonation.save()
             return project(request, p.id, msg='Thank you for suggesting the feature' + newFeature.name + '!')
     else:
-        form = RequestFeatureForm(instance=tempFeature)
-    return render_to_response('request_feature.html', {'form':form}, context_instance=RequestContext(request))
+        request_form = RequestFeatureForm(instance=tempFeature)
+        donate_form = DonationForm(instance=tempFeature)
+
+    return render_to_response('request_feature.html', {'donate_form':donate_form,'request_form':request_form}, context_instance=RequestContext(request))
 
 @login_required
 def edit_feature(request, feature_id):
