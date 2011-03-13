@@ -37,7 +37,8 @@ THE SOFTWARE.
 .ui-progress-bar {
   /* Usual setup stuff */
   position: relative;
-  height: 35px;
+  height: 15px;
+  margin-top: 5px;
   
   /* Pad right so we don't cover the borders when fully progressed */
   padding-right: 2px;
@@ -47,9 +48,9 @@ THE SOFTWARE.
   
   /* Rounds the ends, we specify an excessive amount to make sure they are completely rounded */
   /* Adjust to your liking, and don't forget to adjust to the same amount in .ui-progress */
-  border-radius: 35px;
-  -moz-border-radius: 35px;
-  -webkit-border-radius: 35px;
+  border-radius: 15px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
   
   /* Webkit background gradient */
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b6bcc6), color-stop(1, #9da5b0));
@@ -70,13 +71,13 @@ THE SOFTWARE.
   overflow: hidden;
   
   /* Height should be 2px less than .ui-progress-bar so as to not cover borders and give it a look of being inset */
-  height: 33px;
+  height: 13px;
   
   /* Rounds the ends, we specify an excessive amount to make sure they are completely rounded */
   /* Adjust to your liking, and don't forget to adjust to the same amount in .ui-progress-bar */
-  -moz-border-radius: 35px;
-  -webkit-border-radius: 35px;
-  border-radius: 35px;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
   
   /* Set the background size so the stripes work correctly */
   -webkit-background-size: 44px 44px; /* Webkit */
@@ -116,7 +117,7 @@ THE SOFTWARE.
   border: 1px solid #4c8932;
   
   /* Webkit magic */
-  -webkit-animation: animate-stripes 2s linear infinite;
+  -webkit-animation: animate-stripes 4s linear infinite;
   
   /* TODO: Wait for Mozilla to support animation, then implement */
 }
@@ -126,7 +127,7 @@ THE SOFTWARE.
   font-size: 1.2em;
   position: absolute;
   right: 0;
-  line-height: 33px;
+  line-height: 13px;
   padding-right: 12px;
   color: rgba(0,0,0,0.6);
   text-shadow: rgba(255,255,255, 0.45) 0 1px 0px;
