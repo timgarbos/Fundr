@@ -146,10 +146,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     'fundrBase',
     'socialregistration',
+    'paypal.standard.pdt',
+    'django.contrib.comments',
+    'ajaxcomments',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
@@ -176,6 +178,10 @@ LOGGING = {
         },
     }
 }
+
+PAYPAL_RECEIVER_EMAIL = "timgarbos@gmail.com"
+PAYPAL_IDENTITY_TOKEN = "xxx"
+
 
 """
 SOCIALREGISTRATION_GENERATE_USERNAME = True
