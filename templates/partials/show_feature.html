@@ -10,7 +10,7 @@
  That is <strong>{{feature.percentageFunded}}%</strong>!
  </p>
  <p>
- <a href="/feature/{{feature.id}}">Support this feature</a>
+ <a href="{% url fundrBase.views.donate feature.id %}">Support this feature</a>
  </p>
  {% else %}
  <br />
