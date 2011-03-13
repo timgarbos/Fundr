@@ -6,7 +6,7 @@ from Fundr.fundrBase.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import HttpResponseRedirect
-
+from paypal.standard.forms import PayPalPaymentsForm
 
 
 # Create your views here.
@@ -162,6 +162,24 @@ def donate(request,feature_id):
     except Feature.DoesNotExist:
         raise Http404
     
+    
+    
+    # What you want the button to do.
+    invoice = u'%s%s%s' % (f.id, f.project.id,request.user.id)
+    paypal_dict = {
+        "business": "appfuel@gmail.com",
+        "amount": "10000000.00",
+        "item_name": f.name,
+        "invoice":  invoice,
+        "notify_url": "http://www.example.com/your-ipn-location/",
+        "return_url": "http://www.example.com/your-return-location/",
+        "cancel_return": "http://www.example.com/your-cancel-location/",
+
+    }
+
+    # Create the instance.
+    paypalForm = PayPalPaymentsForm(initial=paypal_dict)
+    
     d = Donation(feature=f, user=request.user)
 
     if request.method == 'POST':
@@ -171,7 +189,7 @@ def donate(request,feature_id):
             return render_to_response('donate_done.html', {'feature':f,'donation':d},context_instance=RequestContext(request))
     else:
         form = DonationForm(instance=d)
-    return render_to_response('donate.html', {'feature':f,'form':form},context_instance=RequestContext(request))
+    return render_to_response('donate.html', {'feature':f,'form':form,'paypalForm':paypalForm},context_instance=RequestContext(request))
 
 @login_required
 def createProject(request):
@@ -244,3 +262,6 @@ def edit_feature(request, feature_id):
         feature_form = RequestFeatureForm(instance=f)
         status_form = FeatureStatusEntryForm(instance=f_status)
     return render_to_response('edit_feature.html', {'feature':f, 'feature_form':feature_form,'status_form':status_form}, context_instance=RequestContext(request))
+    
+    
+

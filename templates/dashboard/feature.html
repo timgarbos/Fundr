@@ -23,11 +23,6 @@
 <a href="{% url fundrBase.views.edit_feature feature.id %}">Edit feature</a>
 {% endif %}
 
-{% load comments %}
-
-<h2>Comments</h2>
-{% render_comment_form for feature %}
-
-{% render_comment_list for feature %}
+<img src="{{linkstring}}"></img>
 
 {% endblock %}
