@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+
+{% block banner %}
+  <h2>{{feature.project.name}} - {{feature.name}}</h2>
+  <h4>{{feature.description}}</h4>
+{% endblock %}
+
+{% block content %}
+  
+ Raised <strong>{{feature.currentFund}}</strong> out of  <strong>{{feature.activeStatus.goal}} </strong> with a donation average donation on  <strong>{{feature.averageFund}} </strong>
+
+ <br>
+
+ That is <strong>{{feature.percentageFunded}}%</strong>!
+ 
+ <br>
+ 
+ Requested by <strong>{{feature.user.username}}</strong> who is willing to give <strong>{{feature.currentFund}} </strong>
+ 
+{% if is_admin %}
+<a href="{% url fundrBase.views.edit_feature feature.id %}">Edit feature</a>
+{% endif %}
+
+{% endblock %}

@@ -3,6 +3,12 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
+class Profile(models.Model):
+    user = models.OneToOneField('auth.User')
+
+    def is_admin_of(self, project):
+        return project in self.user.project_set.all()
+
 
 class Project(models.Model):
     name = models.CharField(max_length=100)
@@ -10,13 +16,21 @@ class Project(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='project_images/',blank=False)
-    #members = models.ManyToManyField(User, through='ProjectAccess')
+    members = models.ManyToManyField(User, through='Membership')
 
     def get_active_features(self):
         set = self.feature_set.all()
         list = []
         for feature in set:
             if feature.activeStatus().status != 'R':
+                list.append(feature)
+        return list
+
+    def get_requested_features(self):
+        set = self.feature_set.all()
+        list = []
+        for feature in set:
+            if feature.activeStatus().status == 'R':
                 list.append(feature)
         return list
 
@@ -130,6 +144,16 @@ class ProjectForm(ModelForm):
         fields = ('name', 'description', 'image')
 
 class RequestFeatureForm(ModelForm):
+    class Meta:
+        model = Feature
+        fields = ('name', 'description')
+
+class FeatureStatusEntryForm(ModelForm):
+    class Meta:
+        model = FeatureStatusEntry
+        fields = ('status', 'goal')
+
+class EditFeatureForm(ModelForm):
     class Meta:
         model = Feature
         fields = ('name', 'description')

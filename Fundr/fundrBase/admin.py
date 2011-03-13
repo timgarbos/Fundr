@@ -1,10 +1,13 @@
 from django.contrib import admin
+from Fundr.fundrBase.models import Profile
 from Fundr.fundrBase.models import Project
 from Fundr.fundrBase.models import Membership
 from Fundr.fundrBase.models import Feature
 from Fundr.fundrBase.models import FeatureStatusEntry
 from Fundr.fundrBase.models import Donation
 
+class ProfileAdmin(admin.ModelAdmin):
+    pass
 class ProjectAdmin(admin.ModelAdmin):
     pass
 class MembershipAdmin(admin.ModelAdmin):
@@ -16,6 +19,7 @@ class FeatureStatusEntryAdmin(admin.ModelAdmin):
 class DonationAdmin(admin.ModelAdmin):
     pass
 
+admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Membership, MembershipAdmin)
 admin.site.register(Feature, FeatureAdmin)

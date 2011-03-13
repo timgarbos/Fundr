@@ -1,0 +1,16 @@
+{% extends "site_base.html" %}
+
+{% block content %}
+
+<p>
+Edit feature:
+<form method="post" action="">
+{% csrf_token %}
+{{ status_form }}
+{{ feature_form }}
+<input type="submit" value="Change!"/>
+</form>
+
+</p>
+
+{% endblock %}

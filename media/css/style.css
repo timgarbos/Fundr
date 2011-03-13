@@ -94,7 +94,6 @@ overflow: hidden;
 #top #logo
 {
 float:left;
-width:324px;
 margin:0px;
 padding:0px 71px 0px 0px;
 }
@@ -273,4 +272,12 @@ color:#555;
       #tabs1 #current a {
       	background-position:0% -42px;
 		 color:#92877f;
+<<<<<<< HEAD
       }
+=======
+      }
+      #tabs1 #current a span {
+      	background-position:100% -42px;
+		 color:#92877f;
+      }
+>>>>>>> 51e09f3d58518158dead08f8123aaf268ed525e3
