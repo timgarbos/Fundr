@@ -18,7 +18,8 @@ img {
 border: none;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4
+{
 font-style: normal;
 text-decoration: none;
 text-transform: none;
@@ -278,12 +279,16 @@ color:#555;
       #tabs1 #current a {
       	background-position:0% -42px;
 		 color:#92877f;
-<<<<<<< HEAD
       }
-=======
-      }
-      #tabs1 #current a span {
-      	background-position:100% -42px;
-		 color:#92877f;
-      }
->>>>>>> 51e09f3d58518158dead08f8123aaf268ed525e3
+/*
+#papir_bg
+{
+background:url(../images/papir.jpg);
+background-repeat: repeat-x;
+background-position: 0 5px;
+height:133px;
+width:100%;
+z-index:-2;
+position:absolute;
+}
+*/
